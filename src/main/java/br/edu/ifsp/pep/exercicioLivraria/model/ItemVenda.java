@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name="item_venda")
@@ -28,7 +29,7 @@ public class ItemVenda implements Serializable {
     private Livro livro;
 
     @Column(name="preco_unitario", precision = 10, scale = 2, nullable = false)
-    private Double precoUnitario;
+    private BigDecimal precoUnitario;
 
     @Column(name="quantidade", nullable = false)
     private Integer quantidade;

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class Venda implements Serializable {
     private LocalDate data;
 
     @Column(name="total", precision = 10, scale = 2, nullable = false)
-    private Double  total;
+    private BigDecimal total;
 
     @OneToMany(mappedBy = "venda")
     private List<ItemVenda> itens = new ArrayList<>();
