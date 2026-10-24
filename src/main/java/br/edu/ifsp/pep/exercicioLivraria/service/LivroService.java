@@ -40,4 +40,15 @@ public class LivroService {
         return new LivroResponseDTO(this.livroRepository.save(livro));
     }
 
+    public Optional<LivroResponseDTO> alterarLivro(LivroRequestDTO livroRequestDTO, Long id){
+
+        return this.livroRepository.findById(id).map(livro -> {
+               livro.setTitulo(livroRequestDTO.titulo());
+               livro.setAutor(livroRequestDTO.autor());
+               livro.setPreco(livroRequestDTO.preco());
+               livro.setQuantidade(livroRequestDTO.quantidade());
+
+               return new LivroResponseDTO(this.livroRepository.save(livro));
+        });
+    }
 }
