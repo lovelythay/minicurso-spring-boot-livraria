@@ -36,5 +36,13 @@ public class LivroController {
         return this.livroService.cadastrarLivro(livroRequestDTO);
     }
 
+    // metodo put - altera todos os campos do objeto
+    @PutMapping("/{id}")
+    public ResponseEntity<LivroResponseDTO> alterarLivro(@RequestBody @Valid LivroRequestDTO livroRequestDTO, @PathVariable Long id){
+
+       return this.livroService.alterarLivro(livroRequestDTO,id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+
+    }
+
 
 }
