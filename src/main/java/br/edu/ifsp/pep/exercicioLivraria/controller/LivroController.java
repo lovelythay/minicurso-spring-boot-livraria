@@ -30,7 +30,7 @@ public class LivroController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public LivroResponseDTO cadastrarLivro(@RequestBody @Valid LivroRequestDTO livroRequestDTO){
 
         return this.livroService.cadastrarLivro(livroRequestDTO);
