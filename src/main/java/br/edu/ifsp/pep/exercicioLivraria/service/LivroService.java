@@ -1,5 +1,6 @@
 package br.edu.ifsp.pep.exercicioLivraria.service;
 
+import br.edu.ifsp.pep.exercicioLivraria.dto.LivroRequestDTO;
 import br.edu.ifsp.pep.exercicioLivraria.dto.LivroResponseDTO;
 import br.edu.ifsp.pep.exercicioLivraria.model.Livro;
 import br.edu.ifsp.pep.exercicioLivraria.repository.LivroRepository;
@@ -21,5 +22,16 @@ public class LivroService {
         return livrosList.stream().map(LivroResponseDTO::new).toList();
     }
 
+    public LivroResponseDTO cadastrarLivro(LivroRequestDTO livroRequestDTO){
+
+        Livro livro = new Livro();
+
+        livro.setTitulo(livroRequestDTO.titulo());
+        livro.setAutor(livroRequestDTO.autor());
+        livro.setQuantidade(livroRequestDTO.quantidade());
+        livro.setPreco(livroRequestDTO.preco());
+
+        return new LivroResponseDTO(this.livroRepository.save(livro));
+    }
 
 }
