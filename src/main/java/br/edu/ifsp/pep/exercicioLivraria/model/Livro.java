@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name="livro")
@@ -28,4 +29,7 @@ public class Livro implements Serializable {
 
     @Column(name="quantidade", nullable = false)
     private Integer quantidade;
+
+    @Column(name="preco",precision = 10, scale = 2, nullable = false)
+    private BigDecimal preco;
 }
