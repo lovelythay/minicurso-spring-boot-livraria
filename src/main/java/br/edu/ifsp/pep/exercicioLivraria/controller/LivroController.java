@@ -6,6 +6,7 @@ import br.edu.ifsp.pep.exercicioLivraria.service.LivroService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,11 @@ public class LivroController {
     @ResponseStatus(HttpStatus.OK)
     public List<LivroResponseDTO> obterLivros(){
         return this.livroService.obterLivros();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<LivroResponseDTO> obterLivroPorId(@PathVariable Long id){ // responseEntity devolve o cabeçalho HTTP completo, com o status correto
+        return this.livroService.obterLivroPorId(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
