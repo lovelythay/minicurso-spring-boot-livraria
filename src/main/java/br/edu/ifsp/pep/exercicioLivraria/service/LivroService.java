@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +21,11 @@ public class LivroService {
         List<Livro> livrosList = this.livroRepository.findAll();
 
         return livrosList.stream().map(LivroResponseDTO::new).toList();
+    }
+
+    public Optional<LivroResponseDTO> obterLivroPorId(Long id){ // optional - pode ou não retornar valor, o compilador nos obriga a tratar e evita exceções inesperadas
+
+        return this.livroRepository.findById(id).map(LivroResponseDTO::new); // se houver resposta, mapeia a entidade para o DTO
     }
 
     public LivroResponseDTO cadastrarLivro(LivroRequestDTO livroRequestDTO){
