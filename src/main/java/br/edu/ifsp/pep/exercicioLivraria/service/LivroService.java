@@ -51,4 +51,16 @@ public class LivroService {
                return new LivroResponseDTO(this.livroRepository.save(livro));
         });
     }
+
+    public boolean removerLivro(Long id){
+
+        if  (!this.livroRepository.existsById(id)){
+
+            return false;
+        }
+
+        this.livroRepository.deleteById(id);
+        return true;
+    }
+
 }
