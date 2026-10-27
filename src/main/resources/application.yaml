@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: exercicioLivraria
+  datasource:
+    url: jdbc:postgresql://localhost:5432/minicurso-spring-boot
+    username: postgres
+    password: ifsp
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
