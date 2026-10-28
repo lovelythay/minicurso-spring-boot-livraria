@@ -29,6 +29,6 @@ public class Venda implements Serializable {
     @Column(name="total", precision = 10, scale = 2, nullable = false)
     private BigDecimal total;
 
-    @OneToMany(mappedBy = "venda")
+    @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
     private List<ItemVenda> itens = new ArrayList<>();
 }
