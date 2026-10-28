@@ -1,9 +1,11 @@
 package br.edu.ifsp.pep.exercicioLivraria.controller;
 
+import br.edu.ifsp.pep.exercicioLivraria.dto.VendaRequestDTO;
 import br.edu.ifsp.pep.exercicioLivraria.dto.VendaResponseDTO;
 import br.edu.ifsp.pep.exercicioLivraria.service.VendaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,5 +24,10 @@ public class VendaController {
         return  this.vendaService.obterVendas();
      }
 
+     @PostMapping
+     @ResponseStatus(HttpStatus.CREATED)
+     public ResponseEntity<VendaResponseDTO> cadastrarVenda(@RequestBody VendaRequestDTO vendaRequestDTO){
+          return this.vendaService.cadastrarVenda(vendaRequestDTO).map(ResponseEntity::ok).orElse(ResponseEntity.badRequest().build());
+     }
 
 }
